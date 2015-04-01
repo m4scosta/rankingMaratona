@@ -16,7 +16,7 @@ class CrawlerDePontuacao(object):
         for participante in self.get_participantes():
             html_content = self.get_profile_html_content(participante)
             points = self.parse_points(html_content)
-            if participante.pontuacao_set.last().pontos != points:
+            if participante.ultima_pontuacao != points:
                 Pontuacao.objects.create(
                     participante=participante, pontos=points
                 )

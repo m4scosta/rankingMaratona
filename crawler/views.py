@@ -1,3 +1,8 @@
-from django.shortcuts import render
+from django.core.urlresolvers import reverse
+from django.shortcuts import redirect
+from .utils import CrawlerDePontuacao
 
-# Create your views here.
+
+def atualizar_rankings(request):
+    CrawlerDePontuacao().crawl()
+    return redirect(reverse('ranking-paricipantes'))
