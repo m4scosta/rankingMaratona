@@ -25,6 +25,13 @@
             </tr>
         {% endfor %}
         </tbody>
+        <tfoot>
+        <tr>
+            <td colspan="3" class="text-center">
+                Atualizado {{ ultima_atualizacao.instant|timesince }} atrás.
+            </td>
+        </tr>
+        </tfoot>
     </table>
 
 {% endblock %}

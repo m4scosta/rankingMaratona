@@ -16,6 +16,9 @@ class Participante(models.Model):
     def ultima_pontuacao(self):
         return self.pontuacoes.last()
 
+    def tem_pontuacao(self):
+        return self.pontuacoes.exists()
+
 
 class Pontuacao(models.Model):
     participante = models.ForeignKey(Participante, related_name='pontuacoes')

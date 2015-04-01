@@ -1,10 +1,14 @@
 from django.shortcuts import render
-from participantes.models import Participante
+from crawler.models import RankingUpdate
+from participantes.models import Participante, Pontuacao
 
 
 def ranking_paricipantes(request):
-    participantes = list(Participante.objects.all())
+    participantes = filter(lambda p: p.ultima_pontuacao, Participante.objects.all())
     participantes.sort(key=lambda p: p.ultima_pontuacao.pontos, reverse=True)
-    context = {'participantes': participantes}
+    context = {
+        'participantes': participantes,
+        'ultima_atualizacao': RankingUpdate.objects.last()
+    }
     return render(request, 'ranking/ranking_participantes.html', context)
 
