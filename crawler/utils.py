@@ -1,6 +1,7 @@
 # coding: utf-8
 import re
 import urllib2
+from crawler.models import RankingUpdate
 
 from participantes.models import Participante, Pontuacao
 
@@ -16,10 +17,13 @@ class CrawlerDePontuacao(object):
         for participante in self.get_participantes():
             html_content = self.get_profile_html_content(participante)
             points = self.parse_points(html_content)
-            if participante.pontuacao_set.last().pontos != points:
+
+            if not participante.tem_pontuacao() or \
+                    participante.ultima_pontuacao.pontos != points:
                 Pontuacao.objects.create(
                     participante=participante, pontos=points
                 )
+        self.save_ranking_update()
 
     def get_profile_html_content(self, participante):
         url = self.URI_PROFILE_URL % participante.uri_id
@@ -30,3 +34,7 @@ class CrawlerDePontuacao(object):
             return self.POINTS_PATTERN.search(html_content).groups()[0]
         except Exception as e:
             print e
+
+    @staticmethod
+    def save_ranking_update():
+        RankingUpdate().save()

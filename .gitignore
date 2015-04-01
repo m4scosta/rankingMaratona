@@ -57,3 +57,9 @@ target/
 
 # PyCharm
 .idea/
+
+# local settings
+*local_settings.py
+
+# local database
+db.sqlite3
