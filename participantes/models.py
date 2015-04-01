@@ -23,6 +23,8 @@ class Participante(models.Model):
 class Pontuacao(models.Model):
     participante = models.ForeignKey(Participante, related_name='pontuacoes')
     pontos = models.PositiveIntegerField()
+    tentados = models.PositiveIntegerField(null=True, blank=True)
+    submissoes = models.PositiveIntegerField(null=True, blank=True)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
