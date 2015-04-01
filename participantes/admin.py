@@ -12,10 +12,10 @@ class PontuacaoInline(admin.TabularInline):
     def has_delete_permission(self, *args, **kwargs):
         return False 
 
+
 class ParticipanteAdmin(admin.ModelAdmin):
     inlines = [PontuacaoInline]
-    list_display = ('nome', 'uri_id')
+    list_display = ('nome', 'uri_id', 'ultima_pontuacao')
 
 
 admin.site.register(Participante, ParticipanteAdmin)
-

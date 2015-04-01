@@ -8,14 +8,17 @@ class Participante(models.Model):
 
     class Meta:
         app_label = 'participantes'
-    
+
     def __unicode__(self):
         return self.nome
 
+    @property
+    def ultima_pontuacao(self):
+        return self.pontuacoes.last()
 
 
 class Pontuacao(models.Model):
-    participante = models.ForeignKey(Participante)
+    participante = models.ForeignKey(Participante, related_name='pontuacoes')
     pontos = models.PositiveIntegerField()
     timestamp = models.DateTimeField(auto_now_add=True)
 
@@ -24,3 +27,5 @@ class Pontuacao(models.Model):
         verbose_name = u'pontuação'
         verbose_name_plural = u'pontuações'
 
+    def __unicode__(self):
+        return unicode(self.pontos)
