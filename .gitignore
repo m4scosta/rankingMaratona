@@ -59,7 +59,7 @@ target/
 .idea/
 
 # local settings
-crawler_uri_fatec/local_settings.py
+*local_settings.py
 
 # local database
 db.sqlite3
