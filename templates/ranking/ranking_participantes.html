@@ -13,7 +13,9 @@
         <tr>
             <th>#</th>
             <th>Nome</th>
-            <th>Pontuação</th>
+            <th>Resolvidos</th>
+            <th>Tentados</th>
+            <th>Submissões</th>
         </tr>
         </thead>
         <tbody>
@@ -21,13 +23,15 @@
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ participante.nome }}</td>
-                <td>{{ participante.ultima_pontuacao }}</td>
+                <td>{{ participante.ultima_pontuacao.pontos }}</td>
+                <td>{{ participante.ultima_pontuacao.tentados }}</td>
+                <td>{{ participante.ultima_pontuacao.submissoes }}</td>
             </tr>
         {% endfor %}
         </tbody>
         <tfoot>
         <tr>
-            <td colspan="3" class="text-center">
+            <td colspan="5" class="text-center">
                 Atualizado {{ ultima_atualizacao.instant|timesince }} atrás.
             </td>
         </tr>
