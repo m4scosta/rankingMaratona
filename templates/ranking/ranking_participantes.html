@@ -13,7 +13,7 @@
         <tr>
             <th>#</th>
             <th>Nome</th>
-            <th>Resolvidos</th>
+            <th>Resolvidos (hoje)</th>
             <th>Tentados</th>
             <th>Submissões</th>
         </tr>
@@ -23,7 +23,12 @@
             <tr>
                 <td>{{ forloop.counter }}</td>
                 <td>{{ participante.nome }}</td>
-                <td>{{ participante.ultima_pontuacao.pontos }}</td>
+                <td>
+                    {{ participante.ultima_pontuacao.pontos }}
+                    {% if participante.pontos_do_dia %}
+                        (<strong class="green"><small>+ {{ participante.pontos_do_dia  }}</small></strong>)
+                    {% endif %}
+                </td>
                 <td>{{ participante.ultima_pontuacao.tentados }}</td>
                 <td>{{ participante.ultima_pontuacao.submissoes }}</td>
             </tr>

@@ -1,5 +1,6 @@
 # coding: utf-8
 from django.db import models
+from datetime import date
 
 
 class Participante(models.Model):
@@ -18,6 +19,13 @@ class Participante(models.Model):
 
     def tem_pontuacao(self):
         return self.pontuacoes.exists()
+
+    def pontos_do_dia(self):
+        pontuacoes_do_dia = self.pontuacoes.filter(timestamp__day=date.today().day)
+        primeira = pontuacoes_do_dia.first() or Pontuacao()
+        ultima = pontuacoes_do_dia.last()
+        pontos = ultima.pontos - primeira.pontos if primeira and ultima else 0
+        return pontos
 
 
 class Pontuacao(models.Model):
