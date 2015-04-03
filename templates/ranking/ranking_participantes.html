@@ -13,7 +13,7 @@
         <tr>
             <th>#</th>
             <th>Nome</th>
-            <th>Resolvidos (hoje)</th>
+            <th>Resolvidos (resolvidos hoje)</th>
             <th>Tentados</th>
             <th>Submissões</th>
         </tr>
@@ -25,9 +25,9 @@
                 <td>{{ participante.nome }}</td>
                 <td>
                     {{ participante.ultima_pontuacao.pontos }}
-                    {% if participante.pontos_do_dia %}
-                        (<strong class="green"><small>+ {{ participante.pontos_do_dia  }}</small></strong>)
-                    {% endif %}
+                    (<strong class="green">
+                        <small>{% if participante.pontos_do_dia %}+ {% endif %}{{ participante.pontos_do_dia }}</small>
+                    </strong>)
                 </td>
                 <td>{{ participante.ultima_pontuacao.tentados }}</td>
                 <td>{{ participante.ultima_pontuacao.submissoes }}</td>
