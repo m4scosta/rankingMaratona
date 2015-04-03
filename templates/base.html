@@ -1,16 +1,35 @@
 <!DOCTYPE html>{% load staticfiles %}
-<html>
+<html prefix="og: http://ogp.me/ns#">
 <head lang="en">
-    <meta charset="UTF-8">
+    {% block meta %}
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+        <meta name="language" content="portuguese, PT-BR"/>
+        <meta name="keywords" content="maratona de programação, maratona, programacaoo, fatec, sao jose dos campos, centro paula souza, estudantes, grupos de estudo, uri, uri online judge"/>
+        <meta name="description" content="Ranking dos participantes do grupo de estudos para maratonas de programação da FATEC São José dos Campos"/>
+        <meta name="author" content="Marcos Costa Pinto"/>
+
+        <meta property="og:title" content="Ranking Maratona"/>
+
+        <meta property="og:description" content="Ranking dos participantes do grupo de estudos para maratonas de programação da FATEC São José dos Campos"/>
+        <meta property="og:url" content="https://rankingmaratona.herokuapp.com/"/>
+
+        <meta property="og:image" content="https://rankingmaratona.herokuapp.com/static/images/snapshot-home.png" />
+        <meta property="og:image:secure_url" content="https://rankingmaratona.herokuapp.com/static/images/snapshot-home.png" />
+        <meta property="og:image:height" content="300" />
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:type" content="image/png" />
+    {% endblock %}
+
     <title>{% block title %}{% endblock %}</title>
     <link rel="icon" type="image/png" href="{% static 'rank-icon.png' %}">
-
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
@@ -33,14 +52,14 @@
 
     <div id="disqus_thread"></div>
     <script type="text/javascript">
-         /* * * CONFIGURATION VARIABLES * * */
-         var disqus_shortname = 'rankingmaratona';
-    
+        /* * * CONFIGURATION VARIABLES * * */
+        var disqus_shortname = 'rankingmaratona';
+
         /* * * DON'T EDIT BELOW THIS LINE * * */
         (function() {
-             var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-             dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-             (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
         })();
     </script>
     <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
@@ -58,13 +77,13 @@
 {% endblock %}
 
 <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
 
-  ga('create', 'UA-52150015-2', 'auto');
-  ga('send', 'pageview');
+    ga('create', 'UA-52150015-2', 'auto');
+    ga('send', 'pageview');
 
 </script>
 
