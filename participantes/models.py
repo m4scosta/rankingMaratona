@@ -21,7 +21,7 @@ class Participante(models.Model):
         return self.pontuacoes.exists()
 
     def pontos_do_dia(self):
-        pontuacoes_do_dia = self.pontuacoes.filter(timestamp__day=date.today().day)
+        pontuacoes_do_dia = self.pontuacoes.filter(timestamp__day=date.today().day, timestamp__month=date.today().month, timestamp__year=date.today().year)
         primeira = pontuacoes_do_dia.first() or Pontuacao()
         ultima = pontuacoes_do_dia.last()
         pontos = ultima.pontos - primeira.pontos if primeira and ultima else 0
